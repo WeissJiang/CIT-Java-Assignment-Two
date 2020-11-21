@@ -1,0 +1,23 @@
+/**
+ * PedigreeDog is a subclass of Dog class.  They contain a breed attribute.
+ * 
+ * @Hui JIANG
+ * @version 27 Oct 2020
+ */
+public class PedigreeDog extends Dog
+{
+    private String breed;
+    
+    public PedigreeDog(String name, int age, String gender, double price, String inBreed){
+        super(name, age, gender, price);
+        breed = inBreed;
+    }
+    
+    public String getBreed(){
+        return breed;
+    }
+    
+    public String toString(){
+        return super.toString() + " Breed is " + breed;
+    }
+}
