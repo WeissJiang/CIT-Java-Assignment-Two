@@ -1,0 +1,84 @@
+import java.util.*;
+import java.text.DecimalFormat;
+/**
+ * The DogBreeder contains Dog objects in an ArrayList.
+ *
+ * @Hui JIANG
+ * @version 27 Oct 2020
+ */
+public class DogBreeder
+{
+    private ArrayList<Dog>dogs = new ArrayList<Dog>();
+    private String name;
+    
+    public DogBreeder(String inNameOfBreeder){
+        name = inNameOfBreeder;
+    }
+
+    public boolean addDog(Dog newDog){
+        if(findDog(newDog.getName()))
+        {
+            System.out.println("Error - There is already a dog for sale called " + newDog.getName());
+            return false;
+        }
+        else
+        {
+            dogs.add(newDog);
+            return true;
+        }
+    }
+    
+    public boolean findDog(String inDogName){
+        for(Dog nextDog : dogs)
+        {
+            if(inDogName.equals(nextDog.getName()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean deleteDog(Dog soldDog){
+        return dogs.remove(soldDog);
+    }
+    
+    public void listDogs(){
+        System.out.println("List of dogs for sale by " + name);
+        for(Dog nextDog : dogs)
+        {
+            System.out.println(nextDog);
+        }
+    }
+    
+    public void calcTotalPrice(){
+        double total = 0;
+        for(Dog nextDog : dogs)
+        {
+            total += nextDog.getPrice();
+        }
+        DecimalFormat df = new DecimalFormat("0.00");
+        System.out.println("The total price of all the dogs for sale in " + name + " is $" + df.format(total));
+    }
+    
+    public void displayDogCheaperThan(double thresholdPrice){
+        System.out.println("A list of dogs cheaper than $" + thresholdPrice + " in " + name);
+        for(Dog nextDog : dogs)
+        {
+            if(nextDog.getPrice() < thresholdPrice)
+            {
+                System.out.println(nextDog);
+            }
+        }
+    }
+    
+    public void displayPedigreeDog(String inBreedName){
+        System.out.println("A list of " + inBreedName + " dogs for sale at " + name);
+        for(Dog nextDog : dogs)
+        {
+            if(nextDog instanceof PedigreeDog)
+                if(((PedigreeDog)nextDog).getBreed().equals(inBreedName))
+                    System.out.println(nextDog);
+        }
+    }
+}
