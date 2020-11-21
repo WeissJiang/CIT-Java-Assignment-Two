@@ -1,0 +1,87 @@
+import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * The test class TestDogBreeder.
+ *
+ * @author  (your name)
+ * @version (a version number or a date)
+ */
+public class TestDogBreeder
+{
+    private DogBreeder dogBreedHui;
+    private Dog dogAnna;
+    private Dog dogBob;
+
+    /**
+     * Default constructor for test class TestDogBreeder
+     */
+    public TestDogBreeder()
+    {
+    }
+
+    /**
+     * Sets up the test fixture.
+     *
+     * Called before every test case method.
+     */
+    @Before
+    public void setUp()
+    {
+        dogBreedHui = new DogBreeder("Hui");
+        dogAnna = new Dog("Anna", 11, "F", 120.00);
+        dogBob = new Dog("Bob", 3, "M", 233.33);
+        dogBreedHui.addDog(dogAnna);
+        
+    }
+
+    /**
+     * Tears down the test fixture.
+     *
+     * Called after every test case method.
+     */
+    @After
+    public void tearDown()
+    {
+    }
+    
+     /**
+     * Test the addDog function.
+     *
+     */
+    @Test
+    public void testAddDog()
+    {
+        assertEquals(true, dogBreedHui.addDog(dogBob));
+    }
+    
+     /**
+     * Test the deleteDog function.
+     *
+     */
+    @Test
+    public void testDeleteDog(){
+        assertEquals(true, dogBreedHui.deleteDog(dogAnna));
+    }
+    
+     /**
+     * Test the findDog function.
+     *
+     */
+    @Test
+    public void testFindDog(){
+        assertEquals(true, dogBreedHui.findDog("Anna"));
+    }
+    
+     /**
+     * Test if it can add same dog twice to the list.
+     *
+     */
+    @Test
+    public void testAddDup()
+    {
+        assertEquals(false, dogBreedHui.addDog(dogAnna));
+    }
+}
