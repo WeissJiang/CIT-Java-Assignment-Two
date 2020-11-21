@@ -1,0 +1,50 @@
+/**
+ * This is an automatic test to test the application.
+ *
+ * @Hui Jiang
+ * @01/11/2020
+ */
+public class HuiTest
+{
+    /**
+     * Constructor for objects of class HuiTest
+     */
+    public HuiTest()
+    {
+    }
+    
+    public static void main(String[] args){
+        //Instantiate dogbreeder and dogs
+        DogBreeder hui = new DogBreeder("Hui's Dogs");
+        Dog anna = new Dog("Anna", 4, "F", 111.11);
+        PedigreeDog barry = new PedigreeDog("Barry", 36, "M", 22.22, "beagle");
+        PedigreeDog cindy = new PedigreeDog("Cindy", 2, "F", 333, "beagle");
+        Dog darryl = new Dog("Darryl", 5, "M", 44);
+        PedigreeDog elsie = new PedigreeDog("Elsie", 10, "F", 555, "poodle");
+        
+        //add dogs
+        hui.addDog(anna);
+        hui.addDog(barry);
+        hui.addDog(cindy);
+        hui.addDog(darryl);
+        hui.addDog(elsie);
+        
+        //list dogs under given conditions
+        hui.listDogs();
+        hui.calcTotalPrice();
+        hui.displayDogCheaperThan(50);
+        hui.displayDogCheaperThan(30);
+        hui.displayPedigreeDog("beagle");
+        hui.displayPedigreeDog("poodle");
+
+        //sell dog Cindy
+        hui.deleteDog(cindy);
+        
+        //list dogs after sold Cindy
+        hui.listDogs();
+        hui.calcTotalPrice();
+        
+        //try to add dog Elsie again
+        hui.addDog(elsie);
+    }
+}
