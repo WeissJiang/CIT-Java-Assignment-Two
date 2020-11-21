@@ -1,0 +1,40 @@
+/**
+ * Class for normal dogs
+ *
+ * @Hui JIANG
+ * @version 27 Oct 2020
+ */
+public class Dog
+{
+    private String name;
+    private int age;
+    private String gender;
+    private double price;
+    
+    public Dog(String inName, int inAge, String inGender, double inPrice){
+        name = inName;
+        age = inAge;
+        gender = inGender;
+        price = inPrice;
+    }
+    
+    public void setAge(int newAge){
+        age = newAge;
+    }
+    
+    public void setPrice(double newPrice){
+        price = newPrice;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public double getPrice(){
+        return price;
+    }
+    
+    public String toString(){
+        return this.getClass().getName() + " " + name + " is a " + age + " weeks old " + gender + " dog for sale at $" + price;
+    }
+}
